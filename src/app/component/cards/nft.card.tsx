@@ -23,7 +23,9 @@ const NftCard = (props:INftCard) => {
             </div>
             <div>
                 <span className='text-xs leading-1'>Posted by:</span>
-                <h6 className='text-xs leading-2'>Cody</h6>
+                <a>
+                    <h6 className='text-xs leading-2'>Cody</h6>
+                </a>
             </div>
         </div>
         <div className='divide-y'></div>
