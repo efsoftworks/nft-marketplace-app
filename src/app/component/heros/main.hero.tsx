@@ -15,7 +15,7 @@ const MainHero = () => {
             </p>
           </div>
         </div>
-
+    
         {/* Sağ taraf */}
         <div className="w-1/2 h-full"> {/* Güncellenen satır */}
           <NftCardEffectSwiper />
