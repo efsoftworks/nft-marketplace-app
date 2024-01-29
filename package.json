@@ -12,6 +12,7 @@
   "dependencies": {
     "@headlessui/react": "^1.7.18",
     "@web3modal/ethers5": "^3.5.6",
+    "axios": "^1.6.7",
     "ethers": "^5.7.2",
     "next": "14.0.4",
     "react": "^18",
