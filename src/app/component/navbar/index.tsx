@@ -1,7 +1,7 @@
 "use client"
 import { useWeb3Modal, useWeb3ModalAccount } from '@web3modal/ethers5/react'
 import { useEffect } from 'react';
-import { shortenWalletAddress } from '@/app/helpers/walletAddressHelper';
+import { shortenWalletAddress } from '@/app/helpers/walletHelper';
 
 //icons
 import { HiOutlineUserCircle } from "react-icons/hi2";
