@@ -38,3 +38,11 @@ p {
 h1 {
   font-family: 'Montserrat', monospace;
 }
+
+span {
+  color:hsla(0,0%,100%,.3);
+}
+
+a {
+  font-family: 'Azeret Mono', monospace;
+}

@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import NftCard from '../cards/nft.card';
 
 const AccountsTabs = () => {
     const [activeTab, setActiveTab] = useState('collection');
@@ -16,7 +17,7 @@ const AccountsTabs = () => {
                             <div className='flex m-0 -ml-2 gap-2'>
                             <li className="me-2 relative list-none" role="presentation">
                                 <button
-                                    className={`inline-block p-4 rounded-t-lg text-lg font-bold ${activeTab === 'collection' ? 'text-sky-400' : 'text-sky-50'}`}
+                                    className={`inline-block p-4 rounded-t-lg text-lg font-bold ${activeTab === 'collection' ? 'text-black' : 'text-sky-50'}`}
                                     onClick={() => handleTabClick('collection')}
                                     role="tab"
                                     aria-controls="profile"
@@ -27,7 +28,7 @@ const AccountsTabs = () => {
                             </li>
                             <li className="me-2" role="presentation">
                                 <button
-                                    className={`inline-block p-4 rounded-t-lg text-lg font-bold ${activeTab === 'created' ? 'text-sky-400' : 'text-sky-50'}`}
+                                    className={`inline-block p-4 rounded-t-lg text-lg font-bold ${activeTab === 'created' ? 'text-black' : 'text-sky-50'}`}
                                     onClick={() => handleTabClick('created')}
                                     role="tab"
                                     aria-controls="dashboard"
@@ -38,7 +39,7 @@ const AccountsTabs = () => {
                             </li>
                             <li className="me-2" role="presentation">
                                 <button
-                                    className={`inline-block p-4 rounded-t-lg text-lg font-bold ${activeTab === 'favorited' ? 'text-sky-400' : 'text-sky-50'}`}
+                                    className={`inline-block p-4 rounded-t-lg text-lg font-bold ${activeTab === 'favorited' ? 'text-black' : 'text-sky-50'}`}
                                     onClick={() => handleTabClick('favorited')}
                                     role="tab"
                                     aria-controls="favorited"
@@ -49,7 +50,7 @@ const AccountsTabs = () => {
                             </li>
                             <li role="presentation">
                                 <button
-                                    className={`inline-block p-4 rounded-t-lg text-lg font-bold ${activeTab === 'activity' ? 'text-sky-400' : 'text-sky-50'}`}
+                                    className={`inline-block p-4 rounded-t-lg text-lg font-bold ${activeTab === 'activity' ? 'text-black' : 'text-sky-50'}`}
                                     onClick={() => handleTabClick('activity')}
                                     role="tab"
                                     aria-controls="activity"
@@ -64,14 +65,11 @@ const AccountsTabs = () => {
                 </nav>
             </div>
             <div id="default-tab-content" className='flex w-full pt-0 lg:pt-6'>
-                <div>
-
-                </div>
                 <div
                     className={`p-4 rounded-lg bg-gray-50 dark:bg-gray-800 ${activeTab === 'collection' ? 'block' : 'hidden'}`}
                     role="tabpanel"
                 >
-                   No items found 
+                   <NftCard/>
                 </div>
                 <div
                     className={`p-4 rounded-lg bg-gray-50 dark:bg-gray-800 ${activeTab === 'created' ? 'block' : 'hidden'}`}
