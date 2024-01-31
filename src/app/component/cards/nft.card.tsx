@@ -3,7 +3,7 @@ import { FaEthereum } from "react-icons/fa";
 
 
 interface INftCard {
-    imageUrl:string
+    imageUrl?:string
 }
 
 const NftCard = (props:INftCard) => {
