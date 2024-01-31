@@ -7,9 +7,9 @@ interface IMintNFT {
     name:string,
     description:string, 
     artist:string,
-    file:File
-    signer:Signer,
-    walletAddress:string
+    file:File // NFT resim dosyası (File tipinde),
+    signer:Signer, // ethers.Signer tipinde bir nesne,
+    walletAddress:string | undefined // Ethereum cüzdan adresi,
 }
 
 export const mintNFT = async (props:IMintNFT) => {
