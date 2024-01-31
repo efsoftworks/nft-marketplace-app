@@ -13,6 +13,11 @@ export const uploadJSON = async (json: Object) => {
 
 export const uploadFile = async (file: File) => {
     const url = api.ipfs.uploadfile;
+
+    if (!url) {
+        throw new Error("API URL is undefined"); // or handle it in some appropriate way
+    }
+    
     let form = new FormData();
     form.append("json.json", file);
     let response = await axios.post(url, form, {})
