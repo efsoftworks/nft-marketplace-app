@@ -13,7 +13,10 @@ interface IMintNFT {
 }
 
 export const mintNFT = async (props:IMintNFT) => {
+
+    console.log(props,"props")
     let contract = await getNftContract(props.signer);
+
     let ipfsImageHash = await uploadFile(props.file);
 
     let metadata = {
@@ -29,8 +32,14 @@ export const mintNFT = async (props:IMintNFT) => {
         ]
     }
 
+    
+
     let ipfsMetadataHash = await uploadJSON(metadata);
-    let tokenId = (await getTokenSupply({signer:props.signer}))
+
+    console.log(ipfsMetadataHash,"metadata")
+    
+    let tokenId = (await getTokenSupply({signer:props.signer})) + 1;
+
 
     contract.methods.mint(tokenId, ipfsImageHash).send({
         from: props.walletAddress
