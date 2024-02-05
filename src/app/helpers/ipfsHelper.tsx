@@ -1,4 +1,4 @@
-import { pinataApiKey, pinataSecretApiKey } from "../contants/pinata";
+import pinata from "../contants/pinata";
 import axios from "axios";
 import api from "../apiConfig";
 
@@ -12,8 +12,13 @@ export const uploadJSON = async (json: Object) => {
     let form = new FormData()
     form.append("json.json", JSON.stringify(json))
 
-    let response = await axios.post(url, form, {})
-    pinHash(response.data.Hash)
+    let response = await axios.post(url, form, {
+        headers: {
+            Authorization: `Basic ${Buffer.from(`${process.env.NEXT_PUBLIC_INFURA_NODE}:${process.env.NEXT_PUBLIC_INFURA_SECRET}`).toString("base64")}`,
+         }
+    })
+
+    pinHash(response.data.Hash, "nftmarketplace")
     return response.data.Hash
 }
 
@@ -21,17 +26,22 @@ export const uploadFile = async (file: File) => {
     const url = api.ipfs.uploadfile;
 
     if (!url) {
-        throw new Error("API URL is undefined"); // or handle it in some appropriate way
+        throw new Error("API URL is undefined");
     }
     
     let form = new FormData();
     form.append("json.json", file);
-    let response = await axios.post(url, form, {})
-    pinHash(response.data.Hash)
+
+    let response = await axios.post(url, form, {
+        headers: {
+            Authorization: `Basic ${Buffer.from(`${process.env.NEXT_PUBLIC_INFURA_NODE}:${process.env.NEXT_PUBLIC_INFURA_SECRET}`).toString("base64")}`,
+         }
+    })
+    pinHash(response.data.Hash, "nftmarketplace")
     return response.data.Hash
 }
 
-export const pinHash =async (hash:string) => {
+export const pinHash =async (hash:string, name:string) => {
     const url = api.ipfs.pinhash;
 
     if (!url) {
@@ -39,11 +49,12 @@ export const pinHash =async (hash:string) => {
     }
 
     let response = await axios.post(url,{
-        hashtoPin: hash
+        hashToPin: hash,
+        name:name
     },{
         headers:{
-            pinata_api_key: pinataApiKey,
-            pinata_secret_api_key: pinataSecretApiKey
+            "Content-Type": "application/json",
+            'Authorization': `Bearer ${pinata.jwt}`
         },
     })
     return response.data.Hash;
