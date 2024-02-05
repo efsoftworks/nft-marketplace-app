@@ -3,9 +3,15 @@ import axios from "axios";
 import api from "../apiConfig";
 
 export const uploadJSON = async (json: Object) => {
-    const url = api.ipfs.uploadjson
+    const url = api.ipfs.uploadjson;
+
+    if (!url) {
+        throw new Error('IPFS upload URL is undefined');
+    }
+
     let form = new FormData()
     form.append("json.json", JSON.stringify(json))
+
     let response = await axios.post(url, form, {})
     pinHash(response.data.Hash)
     return response.data.Hash
@@ -26,7 +32,12 @@ export const uploadFile = async (file: File) => {
 }
 
 export const pinHash =async (hash:string) => {
-    const url = api.ipfs.pinhash
+    const url = api.ipfs.pinhash;
+
+    if (!url) {
+        throw new Error('IPFS pinhash URL is undefined');
+    }
+
     let response = await axios.post(url,{
         hashtoPin: hash
     },{
