@@ -3,6 +3,10 @@
  * Docs: https://pinata.cloud/documentation#PinningServicesAPI
  **********************************************************/
 
-export const pinataApiKey: string = "" // TODO: `env in pinataApiKey create.`
-export const pinataSecretApiKey: string = "" // TODO: `env in pinataApiKey create.`
-export const pinataJWT: string = "" // TODO: `env in pinataApiKey create.`
+const pinata = {
+    apiKey : process.env.NEXT_PUBLIC_PINATA_API_KEY,
+    secretApiKey : process.env.NEXT_PUBLIC_PINATA_SECRET_API_KEY,
+    jwt: process.env.NEXT_PUBLIC_PINATA_JWT,
+};
+
+export default pinata;
