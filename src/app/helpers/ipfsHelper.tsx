@@ -1,6 +1,7 @@
 import pinata from "../contants/pinata";
 import axios from "axios";
 import api from "../apiConfig";
+import { env } from "../../../env";
 
 export const uploadJSON = async (json: Object) => {
     const url = api.ipfs.uploadjson;
@@ -14,7 +15,7 @@ export const uploadJSON = async (json: Object) => {
 
     let response = await axios.post(url, form, {
         headers: {
-            Authorization: `Basic ${Buffer.from(`${process.env.NEXT_PUBLIC_INFURA_NODE}:${process.env.NEXT_PUBLIC_INFURA_SECRET}`).toString("base64")}`,
+            Authorization: `Basic ${Buffer.from(`${env.NEXT_PUBLIC_INFURA_NODE}:${env.NEXT_PUBLIC_INFURA_SECRET}`).toString("base64")}`,
          }
     })
 
@@ -34,7 +35,7 @@ export const uploadFile = async (file: File) => {
 
     let response = await axios.post(url, form, {
         headers: {
-            Authorization: `Basic ${Buffer.from(`${process.env.NEXT_PUBLIC_INFURA_NODE}:${process.env.NEXT_PUBLIC_INFURA_SECRET}`).toString("base64")}`,
+            Authorization: `Basic ${Buffer.from(`${env.NEXT_PUBLIC_INFURA_NODE}:${env.NEXT_PUBLIC_INFURA_SECRET}`).toString("base64")}`,
          }
     })
     pinHash(response.data.Hash, "nftmarketplace")
