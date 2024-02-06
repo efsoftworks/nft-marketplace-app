@@ -68,7 +68,6 @@ jobs:
           echo NEXT_PUBLIC_PINATA_JWT=${{ secrets.NEXT_PUBLIC_PINATA_JWT }} >> .env.local  
           echo NEXT_PUBLIC_PINATA_PIN_HASH=${{ secrets.NEXT_PUBLIC_PINATA_PIN_HASH }} >> .env.local  
           echo NEXT_PUBLIC_PINATA_SECRET_API_KEY=${{ secrets.NEXT_PUBLIC_PINATA_SECRET_API_KEY }} >> .env.local  
-
       - name: Setup Pages
         uses: actions/configure-pages@v4
       - name: Restore cache
