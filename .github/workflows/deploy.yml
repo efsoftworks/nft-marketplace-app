@@ -57,7 +57,18 @@ jobs:
       - name: Make envfile
         run: |
           touch .env.local
-          echo NEXT_PUBLIC_SEPOLIA_INFURA_NODE=${{ secrets.NEXT_PUBLIC_SEPOLIA_INFURA_NODE }} >> .env.local
+          echo NEXT_PUBLIC_INFURA_NODE=${{ secrets.NEXT_PUBLIC_INFURA_NODE }} >> .env.local
+          echo NEXT_PUBLIC_INFURA_RETRIEVE_FILE=${{ secrets.NEXT_PUBLIC_INFURA_RETRIEVE_FILE }} >> .env.local 
+          echo NEXT_PUBLIC_INFURA_RETRIEVE_JSON=${{ secrets.NEXT_PUBLIC_INFURA_RETRIEVE_JSON }} >> .env.local 
+          echo NEXT_PUBLIC_INFURA_SECRET=${{ secrets.NEXT_PUBLIC_INFURA_SECRET }} >> .env.local  
+          echo NEXT_PUBLIC_INFURA_UPLOAD_FILE=${{ secrets.NEXT_PUBLIC_INFURA_UPLOAD_FILE }} >> .env.local  
+          echo NEXT_PUBLIC_INFURA_UPLOAD_JSON=${{ secrets.NEXT_PUBLIC_INFURA_UPLOAD_JSON }} >> .env.local  
+          echo NEXT_PUBLIC_NFT_CONTRACT_ADDRESS=${{ secrets.NEXT_PUBLIC_NFT_CONTRACT_ADDRESS }} >> .env.local  
+          echo NEXT_PUBLIC_PINATA_API_KEY=${{ secrets.NEXT_PUBLIC_PINATA_API_KEY }} >> .env.local  
+          echo NEXT_PUBLIC_PINATA_JWT=${{ secrets.NEXT_PUBLIC_PINATA_JWT }} >> .env.local  
+          echo NEXT_PUBLIC_PINATA_PIN_HASH=${{ secrets.NEXT_PUBLIC_PINATA_PIN_HASH }} >> .env.local  
+          echo NEXT_PUBLIC_PINATA_SECRET_API_KEY=${{ secrets.NEXT_PUBLIC_PINATA_SECRET_API_KEY }} >> .env.local  
+
       - name: Setup Pages
         uses: actions/configure-pages@v4
       - name: Restore cache
